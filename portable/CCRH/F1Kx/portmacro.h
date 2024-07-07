@@ -1,6 +1,6 @@
 /*
  * FreeRTOS Kernel V11.1.0
- * Copyright (C) 2021 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ * Copyright (C) 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
  *
@@ -80,6 +80,7 @@
     #define portSTSR( reg )              __stsr( ( reg ) )
     #define portLDSR( reg, val )         __ldsr( ( reg ), ( val ) )
     #define portSTSR_CCRH( reg, sel )    __stsr_rh( ( reg ), ( sel ) )
+    #define portSYNCM()                  __syncm()
 
 /* Determine the descending of the stack from high address to address */
     #define portSTACK_GROWTH      ( -1 )

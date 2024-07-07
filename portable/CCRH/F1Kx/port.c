@@ -1,6 +1,6 @@
 /*
  * FreeRTOS Kernel V11.1.0
- * Copyright (C) 2021 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ * Copyright (C) 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
  *
@@ -159,7 +159,7 @@
 #define portINT_PRIORITY_LEVEL14            ( 0x000EU ) /* Level 14 */
 #define portINT_PRIORITY_LOWEST             ( 0x000FU ) /* Level 15 (lowest) */
 
-/* Macros indicatings status of scheduler request */
+/* Macros indicating status of scheduler request */
 #define PORT_SCHEDULER_NOREQUEST            0UL
 #define PORT_SCHEDULER_TASKSWITCH           1UL       /* Do not modify */
 #define PORT_SCHEDULER_STARTFIRSTTASK       2UL       /* Do not modify */
@@ -248,12 +248,12 @@ void vPortTickISR( void );
     void vPortYieldCore( uint32_t xCoreID );
 
 /*
- * Inter-processos interrupt handler. The interrupt is triggered by
+ * Inter-processor interrupt handler. The interrupt is triggered by
  * portYIELD_CORE().
  */
     void vPortIPIHander( void );
 
-/* These below funtions implement recursive spinlock for exclusive access among
+/* These functions below implement recursive spinlock for exclusive access among
  * cores. The core will wait until lock will be available, whilst the core which
  * already had lock can acquire lock without waiting. This function could be
  * call from task and interrupt context, the critical section is called
@@ -580,7 +580,7 @@ void vPortEndScheduler( void )
 /*-----------------------------------------------------------*/
 
 /*
- * Handler for inter-processos interrupt in second cores. The interrupt is
+ * Handler for inter-processor interrupt in second cores. The interrupt is
  * triggered by portYIELD_CORE(). vTaskSwitchContext() is invoked to
  * switch tasks
  */
@@ -712,7 +712,7 @@ prvExclusiveLock_Lock_success:
         xSavedInterruptStatus = portSET_INTERRUPT_MASK_FROM_ISR();
 
         /* Sync memory */
-        __syncm();
+        portSYNCM();
 
         /* Error check whether vPortRecursiveLockRelease() is not called in
          * pair with vPortRecursiveLockAcquire() */
